@@ -1,0 +1,72 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+
+# Gráfico 3D com Matplotlib
+fig = plt.figure(figsize=(10, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+# Gerando dados de exemplo para o gráfico 3D
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(np.sqrt(X**2 + Y**2))
+
+ax.plot_surface(X, Y, Z, cmap='viridis')
+ax.set_title('Gráfico 3D - Superfície')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+
+# Descrição do gráfico 3D
+plt.figtext(0.5, 0.01, "Este gráfico 3D mostra uma superfície tridimensional gerada a partir de uma função seno. Ele utiliza a biblioteca Matplotlib para visualizar dados em três dimensões, demonstrando a relação entre os eixos X, Y e Z através da variação da cor e altura da superfície.",
+            wrap=True, horizontalalignment='center', fontsize=10)
+
+plt.show()
+
+# Gráfico de Dispersão 2D com efeitos visuais
+plt.figure(figsize=(8, 6))
+N = 100
+x = np.random.rand(N)
+y = np.random.rand(N)
+colors = np.random.rand(N)
+area = (30 * np.random.rand(N))**2  # Tamanhos diferentes de pontos
+
+plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+plt.title('**Gráfico de Dispersão 2D - Efeitos Visuais**')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.colorbar()  # Barra de cores para indicar escala
+
+# Descrição do gráfico de dispersão 2D
+plt.figtext(0.5, 0.01, "Este gráfico de dispersão 2D utiliza pontos com tamanhos e cores variáveis para destacar diferentes pontos de dados. Ele demonstra visualmente a distribuição aleatória dos dados ao longo dos eixos X e Y.",
+            wrap=True, horizontalalignment='center', fontsize=10)
+
+plt.show()
+
+# Gráfico de Barras com estilo personalizado
+plt.figure(figsize=(10, 6))
+
+# Dados fictícios para demonstração
+bar_width = 0.5
+bars1 = np.random.rand(10)
+bars2 = np.random.rand(10)
+
+r1 = np.arange(len(bars1))
+r2 = [x + bar_width for x in r1]
+
+plt.bar(r1, bars1, color='b', width=bar_width, edgecolor='grey', label='')
+plt.bar(r2, bars2, color='r', width=bar_width, edgecolor='grey', label='')
+
+# Personalização dos rótulos no eixo x
+plt.xlabel('Rótulos dos Grupos')
+plt.ylabel('Valores')
+plt.title('**Gráfico de Barras - Estilo Personalizado**')
+plt.xticks([])  # Deixe em branco para adicionar rótulos personalizados
+
+# Descrição do gráfico de barras
+plt.figtext(0.5, 0.01, "Este gráfico de barras compara dois grupos de dados utilizando barras coloridas e agrupadas. Cada grupo é representado por barras azuis e vermelhas, respectivamente.",
+            wrap=True, horizontalalignment='center', fontsize=10)
+
+plt.legend(['Grupo 1', 'Grupo 2'])
+plt.show()
